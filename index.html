@@ -2,10 +2,21 @@
 <head>
   <link rel="stylesheet" href="styles.css">
   <script src="SpeechRecognition.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
+<script>
+    var shakeEvent = new Shake({threshold: 15});
+    shakeEvent.start();
+    window.addEventListener('shake', function(){
+        addBookmark();
+    }, false);
+    if(!("ondevicemotion" in window)){console.log("Shake Not Supported");}
+</script>
 </head>
 
 <body>
+  <h1>Live Bookmark</h1>
   <section>
-  <button id="RecordBtn">Start Listening</button>
+    <button id="RecordBtn" onclick=toggleRecording()>Start Listening</button>
   </section>
+  <div id="textArea" onclick=addBookmark()></div>
 </body>

@@ -1,13 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Corben');
+
 * {
   margin:0;
   padding: 0;
 }
 
-section {
+h1 {
+  position: fixed;
+  left: 7%;
+  top: 10%;
+  font-family: "Corben";
+}
 
+#textArea{
+  min-height: 200px;
+  width: 50%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  border: 2px solid black;
+  float: right;
+  padding-top: 5px;
+  margin-top: 190px;
+  margin-right: 25%;
 }
 
 #RecordBtn {
+  position: fixed;
+  left: 8%;
+  top: 20%;
   width:10vw;
   border-radius: 10em;
   border-style: none;
@@ -15,6 +35,8 @@ section {
   background-color: red;
   color: white;
   height: 10vw;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.marked {
+  color: purple;
 }
