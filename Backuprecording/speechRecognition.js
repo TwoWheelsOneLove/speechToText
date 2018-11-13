@@ -33,7 +33,8 @@ speechAPI.onresult = function(e) {
 
 function savePhrase(phrase){
   storedPhrases.push(phrase);
-  document.getElementById('Conversation').innerHTML = "";
+  const container = document.getElementById('Conversation');
+  container.innerHTML = "";
 
   for(i=0; i<=storedPhrases.length-1; i++){
     let e = document.createElement('p');
@@ -42,7 +43,7 @@ function savePhrase(phrase){
     if(highlightedPhrases.includes(i)){
     e.classList.add('highlighted');
     }
-    document.getElementById('Conversation').appendChild(e);
+    container.insertBefore(e, container.firstChild )
 
   }
 }
