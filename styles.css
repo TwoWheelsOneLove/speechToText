@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Corben');
+
+* {
+  margin:0;
+  padding: 0;
+}
+
+button {
+  width: 100%;
+  height: 10vh;
+  margin: auto;
+  background-color: cyan;
+  color: white;
+}
+
+#PhraseList {
+  width: 90%;
+  margin: 1% auto 1% auto;
+  border: blue solid 1px;
+}
+
+p {
+  width: 80%;
+  margin: 1vh auto;
+  color: white;
+  min-height: 5vh;
+  background-color: blue;
+}
+
+.highlighted {
+  background-color: purple;
+}
