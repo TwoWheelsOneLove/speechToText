@@ -3,30 +3,62 @@
 * {
   margin:0;
   padding: 0;
+  font-family: sans-serif;
+}
+body {
+  background-color: #f9f9f9;
+}
+header {
+  text-align: center;
+  padding-top: 6vh;
+  letter-spacing: 0.1em;
+  width: 100%;
+  background-color: #79ddfc;
+  color: white;
+  height: 10vh;
+  clip-path: polygon(0 0, 100% 0, 100% 80%,55% 80%, 50% 100%, 45% 80%, 0 80%);
 }
 
 button {
-  width: 100%;
+  width: 100vw;
+  top: 90vh;
+  position: fixed;
   height: 10vh;
-  margin: auto;
-  background-color: cyan;
+  background-color: #79ddfc;
+  border: none;
+  outline: none;
   color: white;
+  letter-spacing: 0.1em;
+}
+
+button:active{
+  background-color: #78fcbc;
 }
 
 #PhraseList {
   width: 90%;
+  height: 65vh;
+  overflow-y: scroll;
   margin: 1% auto 1% auto;
-  border: blue solid 1px;
+  padding: 1em;
+  border: #79ddfc solid 1px;
+}
+
+#PhraseList h1 {
+  text-align: center;
+  color: #79ddfc;
 }
 
 p {
-  width: 80%;
+  clip-path: polygon(3% 0, 100% 0, 100% 100%,3% 100%, 3% 80%, 0% 50%, 3% 20%);
+  width: 70vw;
   margin: 1vh auto;
+  padding: .5em 1em .5em 3em;
   color: white;
   min-height: 5vh;
-  background-color: blue;
+  background-color: #79ddfc;
 }
 
 .highlighted {
-  background-color: purple;
+  background-color: #78fcbc;
 }
