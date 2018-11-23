@@ -11,9 +11,8 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
-let storedPhrases = [];
-let highlightedPhrases = [];
-
+heard = [];
+highlights = [];
 let speechAPI = new SpeechRecognition();
 let speechRecognitionList = new SpeechGrammarList();
 speechAPI.continuous = true;
@@ -34,36 +33,32 @@ function toggleRecording(){
   else{
     speechAPI.stop();
     button.innerHTML = "Start Listening";
-    button.style.backgroundColor = "#4286f4";
+    button.style.backgroundColor = "red";
     console.log("RecordingStopped");
   }
 }
 
-function highlightLast(){
-  highlightedPhrases.push(storedPhrases.length);
-}
-
-speechAPI.onresult = function(e) {
-  let last = e.results.length -1;
-  savePhrase(e.results[last][0].transcript);
-}
-
-
-function savePhrase(phrase){
-  storedPhrases.push(phrase);
-  const container = document.getElementById('Conversation');
-  container.innerHTML = "";
-
-  for(i=0; i<=storedPhrases.length-1; i++){
-    let e = document.createElement('p');
-    e.textContent = storedPhrases[i];
-
-    if(highlightedPhrases.includes(i)){
-    e.classList.add('highlighted');
-    }
-    container.insertBefore(e, container.firstChild )
-
+function addBookmark(){
+  if(!highlights.includes(heard.length)){
+    highlights.push(heard.length);
   }
+}
+
+speechAPI.onresult = function(e){
+  let last = e.results.length -1;
+  let result = e.results[last][0].transcript;
+  heard.push(result);
+  let textpush = [];
+  for(i=0; i<=heard.length; i++){
+    if(highlights.includes(i)){
+      textpush.push("<span class=marked>" + heard[i] + "</span>");
+    }
+    else{
+      textpush.push(heard[i]);
+    }
+  }
+  document.getElementById("text").innerHTML = textpush.join(" ");
+  console.log(result);
 }
 
 async function getTranslation(data, langCode){

@@ -4,24 +4,15 @@
   <script src=shake.js></script>
   <script src="SpeechRecognition.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
-
 </head>
 
 <body>
-  <header>
-    <h3> SPEECH TO TEXT - RETROACTIVE TRANSLATION</h3>
+  <h1>Live Bookmark</h1>
+  <section>
     <button id="RecordBtn" onclick=toggleRecording()>Start Listening</button>
-  </header>
-
-  <section id="PhraseList">
-    <h1> YOUR CONVERSATION </h1>
-    <div id="Conversation">
-
-    </div>
   </section>
-
-  <button id="highlight" onclick=highlightLast()><h3>HIGHLIGHT THAT<h3></button>
-
-
-
+  <section id="container">
+    <div id="translateArea" class ="textArea" onclick=addBookmark()></div>
+    <div id="text" class="textArea" onclick=addBookmark()></div>
+  </section>
 </body>

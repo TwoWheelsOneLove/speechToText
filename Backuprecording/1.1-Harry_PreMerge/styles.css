@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Corben');
+
+* {
+  margin:0;
+  padding: 0;
+}
+
+h1 {
+  position: fixed;
+  left: 7%;
+  top: 10%;
+  font-family: "Corben";
+}
+
+#container{
+  display: inline;
+}
+
+.textArea{
+  min-height: 200px;
+  width: 30%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  border: 2px solid black;
+  float: right;
+  margin-top: 130px;
+  margin-right: 50px;
+}
+
+#RecordBtn {
+  position: fixed;
+  left: 10%;
+  top: 20%;
+  width:10vw;
+  border-radius: 10em;
+  border-style: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  height: 10vw;
+}
+
+.marked {
+  color: purple;
+  font-weight: bold;
+}
