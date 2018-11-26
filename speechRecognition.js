@@ -1,4 +1,6 @@
 window.onload =function(e){
+  document.getElementById("LangSelect").addEventListener('change',changeLang);
+
   var shakeEvent = new Shake({threshold: 15});
   shakeEvent.start();
   window.addEventListener('shake', function(){
@@ -23,17 +25,25 @@ speechAPI.interimResults = false;
 speechAPI.maxAlternatives = 1
 
 
+
+function changeLang(){
+  let language = document.getElementById("LangSelect").value;
+  speechAPI.lang = language;
+  console.log(language);
+}
+
 function toggleRecording(){
   let button = document.getElementById("RecordBtn");
-  if(button.innerHTML == "Start Listening"){
+  if(button.innerHTML == "START LISTENING"){
     speechAPI.start();
-    button.innerHTML = "Stop Listening";
-    button.style.backgroundColor = "blue";
+    button.innerHTML = "STOP LISTENING";
+    button.style.backgroundColor = "#78fcbc";
     console.log("RecordingStarted");
   }
+
   else{
     speechAPI.stop();
-    button.innerHTML = "Start Listening";
+    button.innerHTML = "START LISTENING";
     button.style.backgroundColor = "#4286f4";
     console.log("RecordingStopped");
   }
@@ -49,21 +59,18 @@ speechAPI.onresult = function(e) {
 }
 
 
-function savePhrase(phrase){
+async function savePhrase(phrase){
   storedPhrases.push(phrase);
   const container = document.getElementById('Conversation');
-  container.innerHTML = "";
 
-  for(i=0; i<=storedPhrases.length-1; i++){
-    let e = document.createElement('p');
-    e.textContent = storedPhrases[i];
+  let e = document.createElement('p');
+  e.textContent = "Audio: " + storedPhrases[storedPhrases.length - 1] + " \r\n Translation: " + await getTranslation(storedPhrases[storedPhrases.length - 1], 'en');
 
-    if(highlightedPhrases.includes(i)){
-    e.classList.add('highlighted');
-    }
-    container.insertBefore(e, container.firstChild )
-
+  if(highlightedPhrases.includes(storedPhrases[storedPhrases.length - 1])){
+  e.classList.add('highlighted');
   }
+
+  container.insertBefore(e, container.firstChild);
 }
 
 async function getTranslation(data, langCode){
@@ -74,7 +81,6 @@ async function getTranslation(data, langCode){
   const response = await fetch(url + key + textIn + lang);
   if (response.ok) {
     const result = await response.json();
-    console.log(result.text[0]);
     return result.text[0];
   } else {
     console.error("error getting translation", response.status, response.statusText);

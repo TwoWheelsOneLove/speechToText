@@ -10,8 +10,18 @@
 <body>
   <header>
     <h3> SPEECH TO TEXT - RETROACTIVE TRANSLATION</h3>
-    <button id="RecordBtn" onclick=toggleRecording()>Start Listening</button>
+    <button id="RecordBtn" onclick=toggleRecording()>START LISTENING</button>
   </header>
+
+  <section>
+    <p>Input language (Changes only take effect after stopping/Restarting the recording)</p>
+    <select id="LangSelect">
+      <option value="en-US">Auto Detect</option>
+      <option value="fr-FR">French</option>
+      <option value="es-ES">Spanish</option>
+      <option value="ru-RU">Russian</option>
+    </select>
+  </section>
 
   <section id="PhraseList">
     <h1> YOUR CONVERSATION </h1>
