@@ -14,7 +14,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
 
 let storedPhrases = [];
-let highlightedPhrases = [];
+let highlightNext = false;
 
 let speechAPI = new SpeechRecognition();
 let speechRecognitionList = new SpeechGrammarList();
@@ -49,8 +49,8 @@ function toggleRecording(){
   }
 }
 
-function highlightLast(){
-  highlightedPhrases.push(storedPhrases.length);
+function highlightPhrase(){
+  highlightNext = true;
 }
 
 speechAPI.onresult = function(e) {
@@ -66,8 +66,9 @@ async function savePhrase(phrase){
   let e = document.createElement('p');
   e.textContent = "Audio: " + storedPhrases[storedPhrases.length - 1] + " \r\n Translation: " + await getTranslation(storedPhrases[storedPhrases.length - 1], 'en');
 
-  if(highlightedPhrases.includes(storedPhrases[storedPhrases.length - 1])){
-  e.classList.add('highlighted');
+  if(highlightNext){
+  highlightNext = false;
+  e.setAttribute("style", "margin: 1vh 20% 1vh 10%; background-color: #78fcbc;");
   }
 
   container.insertBefore(e, container.firstChild);

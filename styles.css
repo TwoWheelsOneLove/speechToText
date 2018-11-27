@@ -78,8 +78,3 @@ section {
 #highlight:active{
   background-color: #78fcbc;
 }
-
-.highlighted {
-  margin: 1vh 20% 1vh 10%;
-  background-color: #78fcbc;
-}
